@@ -1,17 +1,33 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
+const HERO_IMAGE_PATH = '/images/hero-img.jpg';
+const HERO_IMAGE_ALT =
+  'An example of the photos distributed through this site (blue-eyed brown short-haired cat glaring out of pitch black darkness)';
+
 const Hero = () => {
   return (
     <Wrapper>
-      <HeroImage
-        src='/images/hero-img.jpg'
-        alt='blue-eyed brown short haired cat glaring out of pitch black darkness'
-      />
-      <Swoop
-        src='/swoop.svg'
-        // alt='a decorative swoop'
-      />
+      <picture alt={HERO_IMAGE_ALT}>
+        <source
+          type='image/avif'
+          srcSet={`
+            ${HERO_IMAGE_PATH.replace('.jpg', '.avif')} 1x,
+            ${HERO_IMAGE_PATH.replace('.jpg', '@2x.avif')} 2x,
+            ${HERO_IMAGE_PATH.replace('.jpg', '@3x.avif')} 3x
+          `}
+        />
+        <source
+          type='image/jpeg'
+          srcSet={`
+            ${HERO_IMAGE_PATH} 1x,
+            ${HERO_IMAGE_PATH.replace('.jpg', '@2x.jpg')} 2x,
+            ${HERO_IMAGE_PATH.replace('.jpg', '@3x.jpg')} 3x
+          `}
+        />
+        <HeroImage src='/images/hero-img.jpg' alt={HERO_IMAGE_ALT} />
+      </picture>
+      <Swoop src='/swoop.svg' alt='' />
     </Wrapper>
   );
 };

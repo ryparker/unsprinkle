@@ -6,7 +6,6 @@ import Header from '../Header';
 import Hero from '../Hero';
 import MainContent from '../MainContent';
 import Footer from '../Footer';
-import './inter-variable.css';
 
 const App = () => {
   return (
